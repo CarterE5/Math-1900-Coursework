@@ -81,7 +81,7 @@ int main ()
 		double changeInTime = times[i] - times[i - 1];
 		double averageSpeed = changeInPosition / changeInTime;
 
-		cout << "Average speed between checkpoint " << i << " and checkpoint " << (i + 1) << ": " << averageSpeed << "mph" << endl;
+		cout << "Average speed between checkpoint " << i << " and checkpoint " << (i + 1) << ": " << averageSpeed << " mph" << endl;
 	}
 
 	// Section 5: Average speed for the whole trip
@@ -89,7 +89,7 @@ int main ()
 	double totalTime = times[numCheckpoints - 1] - times[0];
 	double overallSpeed = totalDistance / totalTime;
 
-	cout << "Average speed for the whole trip: " << overallSpeed << "mph" << endl;
+	cout << "Average speed for the whole trip: " << overallSpeed << " mph" << endl;
 
 	return 0;
 }
