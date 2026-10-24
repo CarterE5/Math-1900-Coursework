@@ -70,5 +70,26 @@ int main ()
 		}
 	}
 
-return 0;
+	// Show all speeds with one decimal place
+	cout << fixed << setprecision(1);
+	cout << endl;
+
+	// Section 4: Average speed between each pair of consecutive checkpoints
+	for (int i = 1; i < numCheckpoints ; i++)
+	{
+		double changeInPosition = positions[i] - positions[i - 1];
+		double changeInTime = times[i] - times[i - 1];
+		double averageSpeed = changeInPosition / changeInTime;
+
+		cout << "Average speed between checkpoint " << i << " and checkpoint " << (i + 1) << ": " << averageSpeed << "mph" << endl;
+	}
+
+	// Section 5: Average speed for the whole trip
+	double totalDistance = positions[numCheckpoints - 1] - positions[0];
+	double totalTime = times[numCheckpoints - 1] - times[0];
+	double overallSpeed = totalDistance / totalTime;
+
+	cout << "Average speed for the whole trip: " << overallSpeed << "mph" << endl;
+
+	return 0;
 }
