@@ -32,5 +32,43 @@ int main ()
 		cout << "How many checkpoints would you like to record?  ";
 	}
 
-  return 0;
+	// Section 2: Collect position and time for each checkpoint
+	vector<double> positions(numCheckpoints);
+	vector<double> times(numCheckpoints);
+
+	for (int i = 0; i < numCheckpoints; i++)
+	{
+		bool valid = false;
+
+		// Keep re-prompting this checkpoint until the input is valid
+		while (!valid)
+		{
+			cout << " Enter position (miles) and time (hours) for checkpoint " << (i + 1) << ": ";
+
+			double pos, t;
+
+			// Make sure the user typed 2  numbers
+			if (!(cin >> pos >> t))
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Error: you must enter 2 numbers (position and time). \n";
+				continue;
+			}
+
+			// Section 3: Validate that time is greater than the previous time
+			if (i > 0 && t <= times[i - 1])
+			{
+				cout << "Error: the time for checkpoint " << (i + 1) << " must be greater than the previous time.(" << times[i - 1] << "hours). Please try again.\n";
+				continue;
+			}
+
+			// Input is good, so store it
+			positions[i] = pos;
+			times[i] = t;
+			valid = true;
+		}
+	}
+
+return 0;
 }
