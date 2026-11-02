@@ -1,4 +1,4 @@
-// Problem 2. Cylinder Volume
+// Carter Ensley - Module 8, Problem 2: Cylinder Volume
 #include <iostream>
 using namespace std;
 
