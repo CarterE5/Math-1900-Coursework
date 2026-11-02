@@ -1,4 +1,4 @@
-// Problem 3. Passphrase Checker
+// Carter Ensley - Module 8, Problem 3: Passphrase Checker
 #include <iostream>
 #include <string>
 using namespace std;
