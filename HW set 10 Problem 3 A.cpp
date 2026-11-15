@@ -55,8 +55,14 @@ int main()
         cin >> x;
     }
     
-    cout << "Enter a y coordinate (0-9): ";
+     cout << "Enter a y coordinate (0-" << ROWS - 1 << "): ";
     cin >> y;
+    while (y < 0 || y >= ROWS)
+    {
+        cout << "y must be from 0 to " << ROWS - 1 << ". Try again: ";
+        cin >> y;
+    }
+  
     cout << endl;
 
     // x is the column and y is the row, so the row index goes first
