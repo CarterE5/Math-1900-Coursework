@@ -1,3 +1,20 @@
+// PLAN - Module 10 feature: input validation
+// Feature: Keep asking for x and y until each one is from 0 to 9,
+//          so a point outside the plot is never written to the array.
+// Pieces:
+//   1. A while loop that re-asks for x while x < 0 or x >= COLS
+//   2. The same loop for y, using ROWS
+//   3. Handle input that is not a number (like "abc") so it doesn't loop forever
+// Rules: plain arrays only, no vector, no cmath, use ROWS/COLS constants (no typed 9s)
+// Tests (worked out by hand):
+//   x=3, y=2        -> * at row 2, column 3 (same as Part A)
+//   x=0, y=0        -> * in the top-left corner
+//   x=9, y=9        -> * in the bottom-right corner (last row, last column)
+//   x=10, then 4    -> rejects 10, asks again, accepts 4
+//   x=-1, then 4    -> rejects -1, asks again, accepts 4
+//   y=12, then 5    -> rejects 12, asks again, accepts 5
+//   x=abc, then 2   -> TEST TO BREAK IT: should reject and ask again, not crash or loop
+
 #include <iostream>
 using namespace std;
 
@@ -30,10 +47,22 @@ int main()
 
     // Get the point from the user
     int x, y;
-    cout << "Enter an x coordinate (0-9): ";
-    cin >> x;
-    cout << "Enter a y coordinate (0-9): ";
-    cin >> y;
+        cout << "Enter an x coordinate (0-" << COLS - 1 << "): ";
+    while (!(cin >> x) || x < 0 || x >= COLS)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "x must be a number from 0 to " << COLS - 1 << ". Try again: ";
+    }
+
+    cout << "Enter a y coordinate (0-" << ROWS - 1 << "): ";
+    while (!(cin >> y) || y < 0 || y >= ROWS)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "y must be a number from 0 to " << ROWS - 1 << ". Try again: ";
+    }
+  
     cout << endl;
 
     // x is the column and y is the row, so the row index goes first
