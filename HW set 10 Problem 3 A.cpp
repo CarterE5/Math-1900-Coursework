@@ -47,8 +47,14 @@ int main()
 
     // Get the point from the user
     int x, y;
-    cout << "Enter an x coordinate (0-9): ";
+    cout << "Enter an x coordinate (0-" << COLS - 1 << "): ";
     cin >> x;
+    while (x < 0 || x >= COLS)
+    {
+        cout << "x must be from 0 to " << COLS - 1 << ". Try again: ";
+        cin >> x;
+    }
+    
     cout << "Enter a y coordinate (0-9): ";
     cin >> y;
     cout << endl;
