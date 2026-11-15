@@ -47,20 +47,20 @@ int main()
 
     // Get the point from the user
     int x, y;
-    cout << "Enter an x coordinate (0-" << COLS - 1 << "): ";
-    cin >> x;
-    while (x < 0 || x >= COLS)
+        cout << "Enter an x coordinate (0-" << COLS - 1 << "): ";
+    while (!(cin >> x) || x < 0 || x >= COLS)
     {
-        cout << "x must be from 0 to " << COLS - 1 << ". Try again: ";
-        cin >> x;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "x must be a number from 0 to " << COLS - 1 << ". Try again: ";
     }
-    
-     cout << "Enter a y coordinate (0-" << ROWS - 1 << "): ";
-    cin >> y;
-    while (y < 0 || y >= ROWS)
+
+    cout << "Enter a y coordinate (0-" << ROWS - 1 << "): ";
+    while (!(cin >> y) || y < 0 || y >= ROWS)
     {
-        cout << "y must be from 0 to " << ROWS - 1 << ". Try again: ";
-        cin >> y;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "y must be a number from 0 to " << ROWS - 1 << ". Try again: ";
     }
   
     cout << endl;
